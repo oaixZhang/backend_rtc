@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rtc.dao.QuestionMapper">
+
+    <select id="getAllSelectQuestions" resultType="com.rtc.bean.SelectQuesBean">
+        SELECT * FROM selectquestion
+    </select>
+    <select id="getAllFillBlankQuestions" resultType="com.rtc.bean.FillBlankBean">
+        SELECT * FROM selectquestion
+    </select>
+</mapper>
