@@ -1,7 +1,6 @@
 package com.rtc.service;
 
-import com.rtc.bean.FillBlankBean;
-import com.rtc.bean.SelectQuesBean;
+import com.rtc.bean.*;
 import com.rtc.dao.QuestionMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,5 +20,17 @@ public class QuestionService {
     @Transactional
     public List<SelectQuesBean> getAllSelectQuestions(){
         return questionMapper.getAllSelectQuestions();
+    }
+    @Transactional
+    public List<MulitChoiceQuesBean> getAllMulitChoiceQues(){
+        return questionMapper.getAllMulitChoiceQues();
+    }
+    @Transactional
+    public List<SimpleAnswerQuesBean> getAllSimpleAnswerQues(){
+        return questionMapper.getAllSimpleAnswerQues();
+    }
+    @Transactional
+    public List<TrueOrFalseQuesBean> getAllTrueOrFalseQues(){
+        return questionMapper.getAllTrueOrFalseQues();
     }
 }

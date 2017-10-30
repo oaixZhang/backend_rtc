@@ -1,20 +1,13 @@
 package com.rtc.bean;
 
-import java.util.HashSet;
-import java.util.Set;
-
-public class BaseQuestionBean {
+public class TrueOrFalseQuesBean{
     private int quesId;
     private String content;
-    private String answer;
+    private int answer;
     private int flag;
     private String imagePath;
     private double accuracy;
     private int sovleNum;
-
-    public static String[] SYMBOLS = {"^", "_", "\\sin", "\\cos", "\\frac", "\\sqrt","_"};
-
-    private Set<String> symbols;
 
     public int getQuesId() {
         return quesId;
@@ -29,19 +22,14 @@ public class BaseQuestionBean {
     }
 
     public void setContent(String content) {
-        symbols = new HashSet<>();
-        for (String str : SYMBOLS) {
-            if (content.indexOf(str) != -1)
-                symbols.add(str);
-        }
         this.content = content;
     }
 
-    public String getAnswer() {
+    public int getAnswer() {
         return answer;
     }
 
-    public void setAnswer(String answer) {
+    public void setAnswer(int answer) {
         this.answer = answer;
     }
 
@@ -75,26 +63,5 @@ public class BaseQuestionBean {
 
     public void setSovleNum(int sovleNum) {
         this.sovleNum = sovleNum;
-    }
-
-    public Set<String> getSymbols() {
-        return symbols;
-    }
-
-    public void setSymbols(Set<String> symbols) {
-        this.symbols = symbols;
-    }
-
-    @Override
-    public String toString() {
-        return "BaseQuestionBean{" +
-                "quesId='" + quesId + '\'' +
-                ", content='" + content + '\'' +
-                ", answer='" + answer + '\'' +
-                ", flag=" + flag +
-                ", imagePath='" + imagePath + '\'' +
-                ", accuracy=" + accuracy +
-                ", sovleNum=" + sovleNum +
-                '}';
     }
 }

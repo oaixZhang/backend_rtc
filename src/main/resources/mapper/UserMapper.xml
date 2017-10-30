@@ -7,4 +7,16 @@
     <select id="getAllUsers" resultType="com.rtc.bean.UserBean">
         SELECT * FROM user
     </select>
+
+    <insert id="stuRegister" useGeneratedKeys="true" keyProperty="stuId">
+        INSERT INTO user (userName,password,name,grade,gender) VALUES (#{userName},#{password},#{name},#{grade},#{gender})
+    </insert>
+
+    <insert id="teacherRegister" useGeneratedKeys="true" keyProperty="teacherId">
+        INSERT INTO teacher (name,gender,phoneNum,password,school) VALUES (#{name},#{genser},#{phoneNum},#{password},#{school})
+    </insert>
+
+    <select id="login" resultType="com.rtc.bean.UserBean">
+        SELECT * FROM user WHERE userName=#{param1}
+    </select>
 </mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rtc.dao.ClassMapper">
+
+    <select id="getAllClasses" resultType="com.rtc.bean.ClassBean">
+        SELECT * FROM class
+    </select>
+
+    <insert id="createClass" useGeneratedKeys="true" keyProperty="classId">
+        INSERT INTO class (teacherId,courseName,courseHours,classSize) VALUES (#{teacherId},#{courseName},#{courseHours},#{classSize})
+    </insert>
+
+    <insert id="stuJoinClass">
+        INSERT INTO class_stu (classId,stuId) VALUES (#{param1},#{param2})
+    </insert>
+
+</mapper>

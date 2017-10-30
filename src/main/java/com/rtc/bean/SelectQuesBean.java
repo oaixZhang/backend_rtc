@@ -1,7 +1,6 @@
 package com.rtc.bean;
 
 public class SelectQuesBean extends BaseQuestionBean {
-    private String imagePath;
     private String optionA;
     private int flagA;
     private String optionB;
@@ -10,14 +9,6 @@ public class SelectQuesBean extends BaseQuestionBean {
     private int flagC;
     private String optionD;
     private int flagD;
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
 
     public String getOptionA() {
         return optionA;

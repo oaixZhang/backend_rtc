@@ -11,4 +11,11 @@ public class MyResponse {
         map.put("data",data);
         return map;
     }
+    public static Map<String, Object> fResponse(int code,String msg,Object data){
+        Map<String,Object> map = new HashMap<>();
+        map.put("code",code);
+        map.put("msg",msg);
+        map.put("data",data);
+        return map;
+    }
 }

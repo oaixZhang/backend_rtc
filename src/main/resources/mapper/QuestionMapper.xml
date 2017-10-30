@@ -5,9 +5,18 @@
 <mapper namespace="com.rtc.dao.QuestionMapper">
 
     <select id="getAllSelectQuestions" resultType="com.rtc.bean.SelectQuesBean">
-        SELECT * FROM selectquestion
+        SELECT * FROM selectques
     </select>
     <select id="getAllFillBlankQuestions" resultType="com.rtc.bean.FillBlankBean">
-        SELECT * FROM selectquestion
+        SELECT * FROM fillblank
+    </select>
+    <select id="getAllMulitChoiceQues" resultType="com.rtc.bean.MulitChoiceQuesBean">
+        SELECT * FROM mcq
+    </select>
+    <select id="getAllSimpleAnswerQues" resultType="com.rtc.bean.SimpleAnswerQuesBean">
+        SELECT * FROM saq
+    </select>
+    <select id="getAllTrueOrFalseQues" resultType="com.rtc.bean.TrueOrFalseQuesBean">
+        SELECT * FROM torf
     </select>
 </mapper>
