@@ -4,17 +4,25 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class BaseQuestionBean {
-    private int quesId;
-    private String content;
-    private String answer;
-    private int flag;
-    private String imagePath;
-    private double accuracy;
-    private int sovleNum;
+    protected int quesId;
+    protected String content;
+    protected Object answer;
+    protected int flag;
+    protected String imagePath;
+    protected double accuracy;
+    protected int sovleNum;
+    private int quesType;
 
-    public static String[] SYMBOLS = {"^", "_", "\\sin", "\\cos", "\\frac", "\\sqrt","_"};
+    public static final String[] SYMBOLS = {"^", "_", "\\sin", "\\cos", "\\frac", "\\sqrt", "_"};
 
-    private Set<String> symbols;
+    public static final int FILLBLANK = 1;
+    public static final int SELECT = 2;
+    public static final int MULITCHOICE = 3;
+    public static final int SIMPLEANSWER = 4;
+    public static final int TRUEORFALSE = 5;
+
+
+    protected Set<String> symbols;
 
     public int getQuesId() {
         return quesId;
@@ -37,11 +45,11 @@ public class BaseQuestionBean {
         this.content = content;
     }
 
-    public String getAnswer() {
+    public Object getAnswer() {
         return answer;
     }
 
-    public void setAnswer(String answer) {
+    public void setAnswer(Object answer) {
         this.answer = answer;
     }
 
@@ -83,6 +91,14 @@ public class BaseQuestionBean {
 
     public void setSymbols(Set<String> symbols) {
         this.symbols = symbols;
+    }
+
+    public int getQuesType() {
+        return quesType;
+    }
+
+    public void setQuesType(int quesType) {
+        this.quesType = quesType;
     }
 
     @Override

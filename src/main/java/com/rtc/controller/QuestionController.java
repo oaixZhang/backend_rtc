@@ -1,22 +1,24 @@
 package com.rtc.controller;
 
+import com.rtc.bean.BaseQuestionBean;
 import com.rtc.bean.MyResponse;
+import com.rtc.bean.QuesSetBean;
 import com.rtc.service.QuestionService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.rtc.utils.LogUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashSet;
 import java.util.Map;
 
 @Controller
 @RequestMapping("/question")
 public class QuestionController {
-    Logger logger = LoggerFactory.getLogger(QuestionController.class);
     @Autowired
     private HttpServletRequest request;
     @Autowired
@@ -31,8 +33,7 @@ public class QuestionController {
     @RequestMapping(value = "/select/all", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> getAllSelectQuestions() {
-
-        logger.info("********** request select questions .\n" + "user-agent:" + request.getHeader("user-agent"));
+        LogUtils.info("********** request select questions .\n" + "user-agent:" + request.getHeader("user-agent"));
         return MyResponse.sResponse(questionService.getAllSelectQuestions());
     }
 
@@ -52,6 +53,44 @@ public class QuestionController {
     @ResponseBody
     public Map<String, Object> getAllSimpleAnswerQues() {
         return MyResponse.sResponse(questionService.getAllSimpleAnswerQues());
+    }
+
+    @RequestMapping(value = "/fillBlank/{quesId}", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> getFillBlankQuesById(@PathVariable("quesId") int quesId) {
+        return MyResponse.sResponse(questionService.getFillBlankQuesById(quesId));
+    }
+
+    @RequestMapping(value = "/select/{quesId}", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> getSelectQuesById(@PathVariable("quesId") int quesId) {
+        return MyResponse.sResponse(questionService.getSelectQuesById(quesId));
+    }
+
+    @RequestMapping(value = "/mulitChoice/{quesId}", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> getMulitChoiceQuesById(@PathVariable("quesId") int quesId) {
+        return MyResponse.sResponse(questionService.getMulitChoiceQuesById(quesId));
+    }
+
+    @RequestMapping(value = "/trueOrFalse/{quesId}", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> getTrueOrFalseQuesById(@PathVariable("quesId") int quesId) {
+        return MyResponse.sResponse(questionService.getTrueOrFalseQuesById(quesId));
+    }
+
+    @RequestMapping(value = "/simpleAnswer/{quesId}", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> getSimpleAnswerQuesById(@PathVariable("quesId") int quesId) {
+        return MyResponse.sResponse(questionService.getSimpleAnswerQuesById(quesId));
+    }
+
+    @RequestMapping(value = "/set", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> createQuestionSet(HashSet<BaseQuestionBean> set) {
+        QuesSetBean quesSetBean = new QuesSetBean();
+        quesSetBean.setQuesSet(set);
+        return MyResponse.sResponse(questionService.createQuesSet(quesSetBean));
     }
 
 }

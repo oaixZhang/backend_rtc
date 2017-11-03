@@ -19,4 +19,27 @@
     <select id="getAllTrueOrFalseQues" resultType="com.rtc.bean.TrueOrFalseQuesBean">
         SELECT * FROM torf
     </select>
+    <select id="getSelectQuesById" resultType="com.rtc.bean.SelectQuesBean">
+        SELECT * FROM selectques WHERE quesId = #{quesId}
+    </select>
+    <select id="getFillBlankQuesById" resultType="com.rtc.bean.FillBlankBean">
+        SELECT * FROM fillblank WHERE quesId = #{quesId}
+    </select>
+    <select id="getMulitChoiceQuesById" resultType="com.rtc.bean.MulitChoiceQuesBean">
+        SELECT * FROM mcq WHERE quesId = #{quesId}
+    </select>
+    <select id="getSimpleAnswerQuesById" resultType="com.rtc.bean.SimpleAnswerQuesBean">
+        SELECT * FROM saq WHERE quesId = #{quesId}
+    </select>
+    <select id="getTrueOrFalseQuesById" resultType="com.rtc.bean.TrueOrFalseQuesBean">
+        SELECT * FROM torf WHERE quesId = #{quesId}
+    </select>
+
+    <insert id="createQuesSet" useGeneratedKeys="true" keyProperty="#{quesSetId}">
+        INSERT INTO ques_set (quesNum,teacherId,flag,mark) VALUES (#{})
+    </insert>
+
+    <insert id="insertQuesIntoSet">
+        INSERT INTO ques_set (quesNum,teacherId,flag,mark) VALUES ()
+    </insert>
 </mapper>
