@@ -1,6 +1,6 @@
 package com.rtc.bean;
 
 public class FillBlankBean extends BaseQuestionBean{
-    private static int quesType = 1;
+    public static int quesType = 1;
 
 }

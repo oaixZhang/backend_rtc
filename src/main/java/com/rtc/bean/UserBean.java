@@ -1,7 +1,7 @@
 package com.rtc.bean;
 
 public class UserBean {
-    private int stuID;
+    private int stuId;
     private String email;
     private String password;
     private String userName;
@@ -23,12 +23,12 @@ public class UserBean {
         this.gender = gender;
     }
 
-    public int getStuID() {
-        return stuID;
+    public int getStuId() {
+        return stuId;
     }
 
-    public void setStuID(int stuID) {
-        this.stuID = stuID;
+    public void setStuId(int stuId) {
+        this.stuId = stuId;
     }
 
     public String getEmail() {
@@ -106,7 +106,7 @@ public class UserBean {
     @Override
     public String toString() {
         return "UserBean{" +
-                "stuID='" + stuID + '\'' +
+                "stuID='" + stuId + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", userName='" + userName + '\'' +

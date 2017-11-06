@@ -16,4 +16,5 @@
         INSERT INTO class_stu (classId,stuId) VALUES (#{param1},#{param2})
     </insert>
 
+
 </mapper>

@@ -1,7 +1,7 @@
 package com.rtc.bean;
 
 public class SelectQuesBean extends BaseQuestionBean {
-    private static int quesType = 2;
+    public static int quesType = 2;
 
     private String optionA;
     private int flagA;

@@ -72,7 +72,7 @@ public class UserController {
                                              @RequestParam("phoneNum") String phoneNum,
                                              @RequestParam("qqNum") String qqNum) {
         UserBean userBean = new UserBean();
-        userBean.setStuID(stuId);
+        userBean.setStuId(stuId);
         userBean.setEmail(email);
         userBean.setGender(gender);
         userBean.setGrade(grade);

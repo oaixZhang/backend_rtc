@@ -2,11 +2,11 @@ package com.rtc.service;
 
 import com.rtc.bean.*;
 import com.rtc.dao.QuestionMapper;
+import com.rtc.utils.LogUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -62,28 +62,16 @@ public class QuestionService {
 
     @Transactional
     public QuesSetBean createQuesSet(QuesSetBean quesSetBean) {
-//        QuesSetBean setBean = new QuesSetBean();
-
-        HashSet<BaseQuestionBean> set = new HashSet<>();
-        BaseQuestionBean baseQuestionBean1 = new BaseQuestionBean();
-        baseQuestionBean1.setQuesId(1);
-        baseQuestionBean1.setQuesType(BaseQuestionBean.FILLBLANK);
-        set.add(baseQuestionBean1);
-        BaseQuestionBean baseQuestionBean2 = new BaseQuestionBean();
-        baseQuestionBean2.setQuesId(1);
-        baseQuestionBean2.setQuesType(BaseQuestionBean.SELECT);
-        set.add(baseQuestionBean2);
-
-        quesSetBean.setQuesNum(2);
-        quesSetBean.setFlag(0);
-        quesSetBean.setMark(100);
-        quesSetBean.setTeacherId(1);
-        quesSetBean.setQuesSet(set);
-
-        if (questionMapper.createQuesSet(quesSetBean)==1) {
-            Iterator iterator = set.iterator();
-            while (iterator.hasNext()){
-                questionMapper.insertQuesIntoSet(quesSetBean.getQuesSetId(), (BaseQuestionBean) iterator.next());
+        if (questionMapper.createQuesSet(quesSetBean) == 1) {
+            LogUtils.info("quesSetBean: quesSetId = "+quesSetBean.getQuesSetId());
+            Iterator iterator = quesSetBean.getQuesSet().iterator();
+            while (iterator.hasNext()) {
+                if ( questionMapper.insertQuesIntoSet(quesSetBean.getQuesSetId(),
+                        (BaseQuestionBean) iterator.next())==1){
+                    LogUtils.info("insert success");
+                }else {
+                    LogUtils.info("error");
+                }
             }
         }
         return quesSetBean;

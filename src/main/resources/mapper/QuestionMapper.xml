@@ -35,11 +35,11 @@
         SELECT * FROM torf WHERE quesId = #{quesId}
     </select>
 
-    <insert id="createQuesSet" useGeneratedKeys="true" keyProperty="#{quesSetId}">
-        INSERT INTO ques_set (quesNum,teacherId,flag,mark) VALUES (#{})
+    <insert id="createQuesSet" useGeneratedKeys="true" keyProperty="quesSetId">
+        INSERT INTO ques_set (quesNum,teacherId,flag,mark) VALUES (#{quesNum},#{teacherId},#{flag},#{mark})
     </insert>
 
     <insert id="insertQuesIntoSet">
-        INSERT INTO ques_set (quesNum,teacherId,flag,mark) VALUES ()
+        INSERT INTO set_ques (quesSetId,quesId,quesType) VALUES (${quesSetId},${questionBean.quesId},${questionBean.quesType})
     </insert>
 </mapper>
