@@ -61,4 +61,16 @@ public class QuesSetBean {
     public void setQuesSet(Set<BaseQuestionBean> quesSet) {
         this.quesSet = quesSet;
     }
+
+    @Override
+    public String toString() {
+        return "QuesSetBean{" +
+                "quesSetId=" + quesSetId +
+                ", quesNum=" + quesNum +
+                ", teacherId=" + teacherId +
+                ", flag=" + flag +
+                ", mark=" + mark +
+                ", quesSet=" + quesSet +
+                '}';
+    }
 }

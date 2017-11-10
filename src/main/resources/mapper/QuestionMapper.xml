@@ -19,6 +19,7 @@
     <select id="getAllTrueOrFalseQues" resultType="com.rtc.bean.TrueOrFalseQuesBean">
         SELECT * FROM torf
     </select>
+
     <select id="getSelectQuesById" resultType="com.rtc.bean.SelectQuesBean">
         SELECT * FROM selectques WHERE quesId = #{quesId}
     </select>
@@ -42,4 +43,26 @@
     <insert id="insertQuesIntoSet">
         INSERT INTO set_ques (quesSetId,quesId,quesType) VALUES (${quesSetId},${questionBean.quesId},${questionBean.quesType})
     </insert>
+
+    <select id="getQuesByQuesSetId" resultType="com.rtc.bean.BaseQuestionBean">
+        SELECT * FROM set_ques WHERE quesSetId = #{quesSetId}
+    </select>
+    <resultMap id="SetAndQues" type="com.rtc.bean.QuesSetBean">
+        <id column="quesSetId" property="quesSetId"/>
+        <result column="quesNum" property="quesNum"/>
+        <result column="teacherId" property="teacherId"/>
+        <result column="flag" property="flag"/>
+        <result column="mark" property="mark"/>
+        <collection property="quesSet" ofType="com.rtc.bean.BaseQuestionBean"
+                    select="com.rtc.dao.QuestionMapper.getQuesByQuesSetId" column="quesSetId" >
+        </collection>
+    </resultMap>
+    <!--<select id="getQuesSetById" resultMap="SetAndQues">-->
+        <!--SELECT a.quesSetId,a.quesNum,a.teacherId,a.flag,a.mark,b.quesId,b.quesSetId -->
+        <!--FROM ques_set a JOIN set_ques b ON a.quesSetId = b.quesSetId -->
+        <!--WHERE a.quesSetId = #{quesSetId}-->
+    <select id="getQuesSetById" resultMap="SetAndQues">
+        SELECT * FROM ques_set WHERE quesSetId = #{quesSetId}
+    </select>
+
 </mapper>

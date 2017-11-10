@@ -4,6 +4,8 @@ import com.rtc.bean.MyResponse;
 import com.rtc.service.AssignmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Map;
 
@@ -12,7 +14,9 @@ public class AssignmentController {
     @Autowired
     private AssignmentService assignmentService;
 
-    public Map<String, Object> assignToClasses(int[] classIds) {
-        return MyResponse.sResponse(assignmentService.assignToClasses(classIds));
+    @RequestMapping(value ="/assignment/class")
+    @ResponseBody
+    public Map<String, Object> assignSetToClasses(int[] classIds) {
+        return MyResponse.sResponse(assignmentService.assignSetToClasses(classIds));
     }
 }

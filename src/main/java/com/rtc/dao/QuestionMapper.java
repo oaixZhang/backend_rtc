@@ -31,4 +31,6 @@ public interface QuestionMapper {
     public int insertQuesIntoSet(@Param("quesSetId") int quesSetId,
                                  @Param("questionBean") BaseQuestionBean baseQuestionBean);
 
+    public QuesSetBean getQuesSetById(int quesSetId);
+
 }

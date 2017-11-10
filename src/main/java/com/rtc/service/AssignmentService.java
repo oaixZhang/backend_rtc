@@ -10,7 +10,7 @@ public class AssignmentService {
     @Autowired
     private AssignmentMapper assignmentMapper;
 
-    public int assignToClasses(int[] classIds) {
+    public int assignSetToClasses(int[] classIds) {
         for (int classId : classIds) {
             if (assignmentMapper.assignToClass(classId) == 1) {
                 LogUtils.info("insert succeed");

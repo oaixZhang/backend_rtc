@@ -104,13 +104,15 @@ public class BaseQuestionBean {
     @Override
     public String toString() {
         return "BaseQuestionBean{" +
-                "quesId='" + quesId + '\'' +
+                "quesId=" + quesId +
                 ", content='" + content + '\'' +
-                ", answer='" + answer + '\'' +
+                ", answer=" + answer +
                 ", flag=" + flag +
                 ", imagePath='" + imagePath + '\'' +
                 ", accuracy=" + accuracy +
                 ", sovleNum=" + sovleNum +
+                ", quesType=" + quesType +
+                ", symbols=" + symbols +
                 '}';
     }
 }

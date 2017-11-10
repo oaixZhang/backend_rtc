@@ -75,4 +75,26 @@ public class SelectQuesBean extends BaseQuestionBean {
     public void setFlagD(int flagD) {
         this.flagD = flagD;
     }
+
+    @Override
+    public String toString() {
+        return "SelectQuesBean{" +
+                "optionA='" + optionA + '\'' +
+                ", flagA=" + flagA +
+                ", optionB='" + optionB + '\'' +
+                ", flagB=" + flagB +
+                ", optionC='" + optionC + '\'' +
+                ", flagC=" + flagC +
+                ", optionD='" + optionD + '\'' +
+                ", flagD=" + flagD +
+                ", quesId=" + quesId +
+                ", content='" + content + '\'' +
+                ", answer=" + answer +
+                ", flag=" + flag +
+                ", imagePath='" + imagePath + '\'' +
+                ", accuracy=" + accuracy +
+                ", sovleNum=" + sovleNum +
+                ", symbols=" + symbols +
+                '}';
+    }
 }

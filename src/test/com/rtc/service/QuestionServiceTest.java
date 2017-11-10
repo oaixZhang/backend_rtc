@@ -19,11 +19,18 @@ public class QuestionServiceTest {
 
     @Autowired
     private QuestionMapper questionMapper;
+    @Autowired
+    private QuestionService questionService;
 
     @Test
     public void getAllFillBlank() throws Exception {
         List<FillBlankBean> list = questionMapper.getAllFillBlankQuestions();
         System.out.println("fillBlankList=" + list.toString());
+    }
+    @Test
+    public void getFillBlankById() throws Exception {
+        FillBlankBean list = questionService.getFillBlankQuesById(1);
+        System.out.println("fillBlank=" + list);
     }
 
     @Test
@@ -55,7 +62,7 @@ public class QuestionServiceTest {
         QuesSetBean quesSetBean = new QuesSetBean();
 
         HashSet<BaseQuestionBean> set = new HashSet<>();
-        for (int i = 1; i <4; i++) {
+        for (int i = 1; i < 4; i++) {
             BaseQuestionBean baseQuestionBean = new BaseQuestionBean();
             baseQuestionBean.setQuesId(1);
             baseQuestionBean.setQuesType(i);
@@ -70,7 +77,7 @@ public class QuestionServiceTest {
         quesSetBean.setQuesSet(set);
 
         if (questionMapper.createQuesSet(quesSetBean) == 1) {
-            LogUtils.info("quesSetBean: quesSetId = "+quesSetBean.getQuesSetId());
+            LogUtils.info("quesSetBean: quesSetId = " + quesSetBean.getQuesSetId());
             Iterator iterator = quesSetBean.getQuesSet().iterator();
             while (iterator.hasNext()) {
                 if (questionMapper.insertQuesIntoSet(quesSetBean.getQuesSetId(),
@@ -81,6 +88,18 @@ public class QuestionServiceTest {
                 }
             }
         }
+    }
+
+    @Test
+    public void getQuesSetById() throws Exception {
+        QuesSetBean quesSetBean = questionMapper.getQuesSetById(1);
+        System.out.println("quesSetBean: " + quesSetBean);
+    }
+
+    @Test
+    public void testGetQuesSetById() {
+        QuesSetBean quesSetBean = questionService.getQuesSetById(1);
+        System.out.println("quesSetBean: " + quesSetBean);
 
     }
 
