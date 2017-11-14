@@ -1,16 +1,16 @@
 package com.rtc.controller;
 
-import com.rtc.bean.BaseQuestionBean;
 import com.rtc.bean.MyResponse;
-import com.rtc.bean.QuesSetBean;
 import com.rtc.service.QuestionService;
 import com.rtc.utils.LogUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashSet;
 import java.util.Map;
 
 @Controller
@@ -80,21 +80,6 @@ public class QuestionController {
     @ResponseBody
     public Map<String, Object> getSimpleAnswerQuesById(@PathVariable("quesId") int quesId) {
         return MyResponse.sResponse(questionService.getSimpleAnswerQuesById(quesId));
-    }
-
-    @RequestMapping(value = "/set", method = RequestMethod.POST)
-    @ResponseBody
-    public Map<String, Object> createQuestionSet(HashSet<BaseQuestionBean> set) {
-        QuesSetBean quesSetBean = new QuesSetBean();
-        quesSetBean.setQuesSet(set);
-        return MyResponse.sResponse(questionService.createQuesSet(quesSetBean));
-    }
-
-    @RequestMapping(value = "/set/{quesSetId}",method = RequestMethod.GET)
-    @ResponseBody
-    public Map<String,Object> getQuesSetById(@PathVariable("quesSetId") int quesSetId){
-
-        return MyResponse.sResponse(questionService);
     }
 
 

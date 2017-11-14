@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rtc.dao.RecordMapper">
+
+    <insert id="insertRecord">
+        INSERT INTO stu_ques_record (stuId,quesId,quesType,errFlag,quesSetId,stuAnswer) VALUES (#{stuId},#{quesId},#{quesType},#{errFlag},#{quesSetId},#{stuAnswer})
+    </insert>
+
+    <select id="getRecordByStuIdQuesIdSetId" resultType="com.rtc.bean.StuQuesRecordBean">
+        SELECT * FROM stu_ques_record WHERE stuId = #{stuId} and quesId = #{quesId} and quesSetId = #{quesSetId} and quesType=#{quesType}
+    </select>
+    <update id="updateRecord">
+        UPDATE stu_ques_record SET errFlag = #{errFlag} WHERE stuId = #{stuId} and quesId = #{quesId} and quesSetId = #{quesSetId} and quesType=#{quesType}
+    </update>
+</mapper>

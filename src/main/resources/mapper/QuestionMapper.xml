@@ -7,15 +7,19 @@
     <select id="getAllSelectQuestions" resultType="com.rtc.bean.SelectQuesBean">
         SELECT * FROM selectques
     </select>
+
     <select id="getAllFillBlankQuestions" resultType="com.rtc.bean.FillBlankBean">
         SELECT * FROM fillblank
     </select>
+
     <select id="getAllMulitChoiceQues" resultType="com.rtc.bean.MulitChoiceQuesBean">
         SELECT * FROM mcq
     </select>
+
     <select id="getAllSimpleAnswerQues" resultType="com.rtc.bean.SimpleAnswerQuesBean">
         SELECT * FROM saq
     </select>
+
     <select id="getAllTrueOrFalseQues" resultType="com.rtc.bean.TrueOrFalseQuesBean">
         SELECT * FROM torf
     </select>
@@ -23,46 +27,21 @@
     <select id="getSelectQuesById" resultType="com.rtc.bean.SelectQuesBean">
         SELECT * FROM selectques WHERE quesId = #{quesId}
     </select>
+
     <select id="getFillBlankQuesById" resultType="com.rtc.bean.FillBlankBean">
         SELECT * FROM fillblank WHERE quesId = #{quesId}
     </select>
+
     <select id="getMulitChoiceQuesById" resultType="com.rtc.bean.MulitChoiceQuesBean">
         SELECT * FROM mcq WHERE quesId = #{quesId}
     </select>
+
     <select id="getSimpleAnswerQuesById" resultType="com.rtc.bean.SimpleAnswerQuesBean">
         SELECT * FROM saq WHERE quesId = #{quesId}
     </select>
+
     <select id="getTrueOrFalseQuesById" resultType="com.rtc.bean.TrueOrFalseQuesBean">
         SELECT * FROM torf WHERE quesId = #{quesId}
-    </select>
-
-    <insert id="createQuesSet" useGeneratedKeys="true" keyProperty="quesSetId">
-        INSERT INTO ques_set (quesNum,teacherId,flag,mark) VALUES (#{quesNum},#{teacherId},#{flag},#{mark})
-    </insert>
-
-    <insert id="insertQuesIntoSet">
-        INSERT INTO set_ques (quesSetId,quesId,quesType) VALUES (${quesSetId},${questionBean.quesId},${questionBean.quesType})
-    </insert>
-
-    <select id="getQuesByQuesSetId" resultType="com.rtc.bean.BaseQuestionBean">
-        SELECT * FROM set_ques WHERE quesSetId = #{quesSetId}
-    </select>
-    <resultMap id="SetAndQues" type="com.rtc.bean.QuesSetBean">
-        <id column="quesSetId" property="quesSetId"/>
-        <result column="quesNum" property="quesNum"/>
-        <result column="teacherId" property="teacherId"/>
-        <result column="flag" property="flag"/>
-        <result column="mark" property="mark"/>
-        <collection property="quesSet" ofType="com.rtc.bean.BaseQuestionBean"
-                    select="com.rtc.dao.QuestionMapper.getQuesByQuesSetId" column="quesSetId" >
-        </collection>
-    </resultMap>
-    <!--<select id="getQuesSetById" resultMap="SetAndQues">-->
-        <!--SELECT a.quesSetId,a.quesNum,a.teacherId,a.flag,a.mark,b.quesId,b.quesSetId -->
-        <!--FROM ques_set a JOIN set_ques b ON a.quesSetId = b.quesSetId -->
-        <!--WHERE a.quesSetId = #{quesSetId}-->
-    <select id="getQuesSetById" resultMap="SetAndQues">
-        SELECT * FROM ques_set WHERE quesSetId = #{quesSetId}
     </select>
 
 </mapper>

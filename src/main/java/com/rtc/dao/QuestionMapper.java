@@ -1,7 +1,6 @@
 package com.rtc.dao;
 
 import com.rtc.bean.*;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -25,12 +24,5 @@ public interface QuestionMapper {
     public SimpleAnswerQuesBean getSimpleAnswerQuesById(int quesId);
 
     public TrueOrFalseQuesBean getTrueOrFalseQuesById(int quesId);
-
-    public int createQuesSet(QuesSetBean quesSetBean);
-
-    public int insertQuesIntoSet(@Param("quesSetId") int quesSetId,
-                                 @Param("questionBean") BaseQuestionBean baseQuestionBean);
-
-    public QuesSetBean getQuesSetById(int quesSetId);
 
 }

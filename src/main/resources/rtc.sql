@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : local
-Source Server Version : 50558
+Source Server Version : 50719
 Source Host           : localhost:3306
 Source Database       : rtc
 
 Target Server Type    : MYSQL
-Target Server Version : 50558
+Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2017-11-10 22:18:11
+Date: 2017-11-14 13:56:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,11 +27,12 @@ CREATE TABLE `class` (
   `classSize` int(11) NOT NULL,
   PRIMARY KEY (`classId`),
   KEY `FK_TeacherClass` (`teacherId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of class
 -- ----------------------------
+INSERT INTO `class` VALUES ('1', '1', 'math', '30', '50');
 
 -- ----------------------------
 -- Table structure for class_stu
@@ -46,6 +47,7 @@ CREATE TABLE `class_stu` (
 -- ----------------------------
 -- Records of class_stu
 -- ----------------------------
+INSERT INTO `class_stu` VALUES ('1', '1');
 
 -- ----------------------------
 -- Table structure for fillblank
@@ -109,6 +111,7 @@ CREATE TABLE `ques_set` (
 -- Records of ques_set
 -- ----------------------------
 INSERT INTO `ques_set` VALUES ('1', '3', '1', '0', '100');
+INSERT INTO `ques_set` VALUES ('2', '1', '1', '0', '10');
 
 -- ----------------------------
 -- Table structure for saq
@@ -171,6 +174,8 @@ CREATE TABLE `set_class` (
 -- ----------------------------
 -- Records of set_class
 -- ----------------------------
+INSERT INTO `set_class` VALUES ('1', '1', '2017-11-11 02:45:34');
+INSERT INTO `set_class` VALUES ('1', '2', '2017-11-11 11:17:17');
 
 -- ----------------------------
 -- Table structure for set_ques
@@ -188,26 +193,28 @@ CREATE TABLE `set_ques` (
 INSERT INTO `set_ques` VALUES ('1', '1', '1');
 INSERT INTO `set_ques` VALUES ('1', '1', '2');
 INSERT INTO `set_ques` VALUES ('1', '1', '3');
+INSERT INTO `set_ques` VALUES ('2', '1', '4');
 
 -- ----------------------------
 -- Table structure for stu_ques_record
 -- ----------------------------
 DROP TABLE IF EXISTS `stu_ques_record`;
 CREATE TABLE `stu_ques_record` (
-  `id` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `stuId` int(11) NOT NULL,
   `quesId` int(11) NOT NULL,
   `quesType` tinyint(1) NOT NULL,
-  `errFlag` int(11) DEFAULT NULL,
+  `errFlag` tinyint(1) DEFAULT NULL,
   `quesSetId` int(11) DEFAULT NULL,
   `stuAnswer` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`quesId`,`stuId`),
+  PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_QUES_SET_ID` (`quesSetId`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of stu_ques_record
 -- ----------------------------
+INSERT INTO `stu_ques_record` VALUES ('1', '1', '1', '1', '0', '1', '学生回答');
 
 -- ----------------------------
 -- Table structure for teacher
@@ -226,6 +233,7 @@ CREATE TABLE `teacher` (
 -- ----------------------------
 -- Records of teacher
 -- ----------------------------
+INSERT INTO `teacher` VALUES ('1', 'Gavin', '1', '15680022990', '123123', 'uestc');
 
 -- ----------------------------
 -- Table structure for torf
