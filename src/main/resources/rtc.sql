@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2017-11-14 13:56:35
+Date: 2017-12-09 10:58:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,12 +27,13 @@ CREATE TABLE `class` (
   `classSize` int(11) NOT NULL,
   PRIMARY KEY (`classId`),
   KEY `FK_TeacherClass` (`teacherId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of class
 -- ----------------------------
 INSERT INTO `class` VALUES ('1', '1', 'math', '30', '50');
+INSERT INTO `class` VALUES ('2', '2', 'English', '20', '40');
 
 -- ----------------------------
 -- Table structure for class_stu
@@ -48,6 +49,10 @@ CREATE TABLE `class_stu` (
 -- Records of class_stu
 -- ----------------------------
 INSERT INTO `class_stu` VALUES ('1', '1');
+INSERT INTO `class_stu` VALUES ('1', '3');
+INSERT INTO `class_stu` VALUES ('1', '4');
+INSERT INTO `class_stu` VALUES ('2', '2');
+INSERT INTO `class_stu` VALUES ('2', '3');
 
 -- ----------------------------
 -- Table structure for fillblank
@@ -132,7 +137,7 @@ CREATE TABLE `saq` (
 -- ----------------------------
 -- Records of saq
 -- ----------------------------
-INSERT INTO `saq` VALUES ('1', '简答小华在解一元二次方程x^{2}-x=0时，只得出一个根x=1，则被漏掉的一个根是_', 'x=2', '0', null, null, null, null);
+INSERT INTO `saq` VALUES ('1', '简答小华在解一元二次方程x^{2}-x=0时，只得出一个根x=1，则被漏掉的一个根是?', 'x=2', '0', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for selectques
@@ -204,17 +209,38 @@ CREATE TABLE `stu_ques_record` (
   `stuId` int(11) NOT NULL,
   `quesId` int(11) NOT NULL,
   `quesType` tinyint(1) NOT NULL,
-  `errFlag` tinyint(1) DEFAULT NULL,
+  `flag` tinyint(1) DEFAULT NULL,
   `quesSetId` int(11) DEFAULT NULL,
   `stuAnswer` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `INDEX_QUES_SET_ID` (`quesSetId`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  KEY `INDEX_QUES_SET_ID` (`quesSetId`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of stu_ques_record
 -- ----------------------------
 INSERT INTO `stu_ques_record` VALUES ('1', '1', '1', '1', '0', '1', '学生回答');
+INSERT INTO `stu_ques_record` VALUES ('2', '1', '1', '3', '0', '1', '我的回答');
+
+-- ----------------------------
+-- Table structure for stu_set_record
+-- ----------------------------
+DROP TABLE IF EXISTS `stu_set_record`;
+CREATE TABLE `stu_set_record` (
+  `stuId` int(11) NOT NULL,
+  `classId` int(11) DEFAULT NULL,
+  `quesSetId` int(11) NOT NULL,
+  `flag` tinyint(4) DEFAULT NULL,
+  `committedDate` datetime DEFAULT NULL,
+  `checkedDate` datetime DEFAULT NULL,
+  `accuracy` float DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of stu_set_record
+-- ----------------------------
+INSERT INTO `stu_set_record` VALUES ('3', '1', '2', '0', '2017-12-07 20:43:08', '2017-12-08 18:43:16', '80');
+INSERT INTO `stu_set_record` VALUES ('1', '1', '2', '0', '2017-12-05 20:52:48', '2017-12-09 20:52:52', '100');
 
 -- ----------------------------
 -- Table structure for teacher
@@ -234,6 +260,7 @@ CREATE TABLE `teacher` (
 -- Records of teacher
 -- ----------------------------
 INSERT INTO `teacher` VALUES ('1', 'Gavin', '1', '15680022990', '123123', 'uestc');
+INSERT INTO `teacher` VALUES ('2', 'Peter', '1', '18781982388', 'qwe123', 'ustc');
 
 -- ----------------------------
 -- Table structure for torf
@@ -273,11 +300,12 @@ CREATE TABLE `user` (
   `imagePath` varchar(200) DEFAULT NULL,
   `token` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`stuId`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'mailxiaoz@163.com', 'qwe123123', 'xiaozhang', 'zx', '1', 'uestc', '1', '18781999999', '3126929722', null, null);
-INSERT INTO `user` VALUES ('5', null, 'qwe123', 'testuser', 'tom', '0', null, '2', null, null, null, null);
-INSERT INTO `user` VALUES ('6', null, 'qwe123123', 'maccount', 'jerry', '1', null, 'u3', null, null, null, null);
+INSERT INTO `user` VALUES ('2', null, 'qwe123', 'testuser', 'tom', '0', null, '2', null, null, null, null);
+INSERT INTO `user` VALUES ('3', null, 'qwe123123', 'maccount', 'jerry', '1', null, 'u3', null, null, null, null);
+INSERT INTO `user` VALUES ('4', '4@163.com', 'qwe123', 'account4', 'mars', '0', 'ustc', 'u3', '18788888888', '312882', null, null);

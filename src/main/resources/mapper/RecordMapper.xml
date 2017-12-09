@@ -23,7 +23,7 @@
         SELECT tb1.stuId,tb2.name,tb1.quesSetId,tb1.flag,tb1.committedDate,tb1.checkedDate,tb1.accuracy FROM stu_set_record tb1 JOIN user tb2 ON tb1.stuId = tb2.stuId WHERE quesSetId = #{quesSetId}
     </select>
 
-    <update id="updateRecord">
-        UPDATE stu_ques_record SET errFlag = #{errFlag} WHERE stuId = #{stuId} and quesId = #{quesId} and quesSetId = #{quesSetId} and quesType=#{quesType}
+    <update id="updateQuesRecord">
+        UPDATE stu_ques_record SET flag = #{flag} WHERE stuId = #{stuId} and quesId = #{quesId} and quesSetId = #{quesSetId} and quesType=#{quesType}
     </update>
 </mapper>

@@ -28,7 +28,7 @@ public class RecordService {
         for (StuQuesRecordBean quesRecord : list) {
             recordMapper.insertRecord(quesRecord);
         }
-        return recordMapper.insertSetRecord(list.get(0).getStuId(),list.get(0).getQuesSetId(),new Date());
+        return recordMapper.insertSetRecord(list.get(0).getStuId(), list.get(0).getQuesSetId(), new Date());
     }
 
     public StuQuesRecordBean getRecordByStuIdQuesIdSetId(StuQuesRecordBean stuQuesRecordBean) {
@@ -53,7 +53,10 @@ public class RecordService {
         return recordMapper.getStuSetRecordByClassIdAndSetId(classId, quesSetId);
     }
 
-    public int updateRecord(StuQuesRecordBean stuQuesRecordBean) {
-        return recordMapper.updateRecord(stuQuesRecordBean);
+    public int updateQuesRecord(List<StuQuesRecordBean> list) {
+        for (StuQuesRecordBean quesRecord : list) {
+            recordMapper.updateQuesRecord(quesRecord);
+        }
+        return 1;
     }
 }

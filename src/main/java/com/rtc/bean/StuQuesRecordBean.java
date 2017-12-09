@@ -9,7 +9,7 @@ public class StuQuesRecordBean {
     private int quesId;
     private int quesSetId;
     private int quesType;
-    private int errFlag;
+    private int flag;
     private String stuAnswer;
 
     public StuQuesRecordBean() {
@@ -55,12 +55,12 @@ public class StuQuesRecordBean {
         this.quesType = quesType;
     }
 
-    public int getErrFlag() {
-        return errFlag;
+    public int getFlag() {
+        return flag;
     }
 
-    public void setErrFlag(int errFlag) {
-        this.errFlag = errFlag;
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 
     public String getStuAnswer() {
@@ -79,7 +79,7 @@ public class StuQuesRecordBean {
                 ", quesId=" + quesId +
                 ", quesSetId=" + quesSetId +
                 ", quesType=" + quesType +
-                ", errFlag=" + errFlag +
+                ", flag=" + flag +
                 ", stuAnswer='" + stuAnswer + '\'' +
                 '}';
     }

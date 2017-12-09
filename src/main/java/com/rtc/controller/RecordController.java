@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -80,7 +79,8 @@ public class RecordController {
     }
 
     /**
-     * 添加学生一次作业的记录，在set_ques_record表中添加纪录（每道题目的学生回答），在stu_set_record表中添加一条学生提交过作业的记录
+     * 添加学生一次作业的记录
+     * 在set_ques_record表中添加纪录（每道题目的学生回答），在stu_set_record表中添加一条学生提交过作业的记录
      * @param list
      * @return
      */
@@ -90,9 +90,15 @@ public class RecordController {
         return MyResponse.sResponse(recordService.insertSetRecord(list));
     }
 
+    /**
+     * 老师使用
+     * 批改学生作业，修改stu_ques_record表中每条记录的flag字段，1表示正确，2错误
+     * @param list 传入要修改的记录，flag为有效字段，其他用于定位
+     * @return
+     */
     @ResponseBody
-    @RequestMapping(value = "/record/stuQuesAnswer", method = RequestMethod.PUT)
-    public Map<String, Object> updateRecord(StuQuesRecordBean stuQuesRecordBean) {
-        return MyResponse.sResponse(0);
+    @RequestMapping(value = "/record/updateQuesRecord", method = RequestMethod.PUT)
+    public Map<String, Object> updateQuesRecord(List<StuQuesRecordBean> list) {
+        return MyResponse.sResponse(recordService.updateQuesRecord(list));
     }
 }

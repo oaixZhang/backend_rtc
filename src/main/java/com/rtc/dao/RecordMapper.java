@@ -18,6 +18,6 @@ public interface RecordMapper {
 
     public List<StuSetRecordBean> getStuSetRecordByClassIdAndSetId(@Param("classId") int classId, @Param("quesSetId") int quesSetId);
 
-    public int updateRecord(StuQuesRecordBean stuQuesRecordBean);
+    public int updateQuesRecord(StuQuesRecordBean stuQuesRecordBean);
 
 }
