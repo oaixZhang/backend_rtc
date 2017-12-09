@@ -8,6 +8,18 @@
         SELECT * FROM class
     </select>
 
+    <select id="getClassesByTeacherId" resultType="com.rtc.bean.ClassBean">
+        SELECT * FROM class WHERE teacherId = #{teacherId}
+    </select>
+
+    <select id="getClassByClassId" resultType="com.rtc.bean.ClassBean">
+        SELECT * FROM class WHERE classId = #{classId}
+    </select>
+
+    <select id="getStuListByClassId" resultType="com.rtc.bean.UserBean">
+        SELECT tb1.stuId,tb2.name,tb2.grade FROM class_stu tb1 JOIN user tb2 ON tb1.stuId = tb2.stuId WHERE classId = #{classId}
+    </select>
+
     <insert id="createClass" useGeneratedKeys="true" keyProperty="classId">
         INSERT INTO class (teacherId,courseName,courseHours,classSize) VALUES (#{teacherId},#{courseName},#{courseHours},#{classSize})
     </insert>

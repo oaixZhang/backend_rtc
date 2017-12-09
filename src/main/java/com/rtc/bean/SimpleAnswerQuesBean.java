@@ -7,6 +7,7 @@ public class SimpleAnswerQuesBean extends BaseQuestionBean {
     public String toString() {
         return "SimpleAnswerQuesBean{" +
                 "quesId=" + quesId +
+                "quesType=" + quesType +
                 ", content='" + content + '\'' +
                 ", answer=" + answer +
                 ", flag=" + flag +

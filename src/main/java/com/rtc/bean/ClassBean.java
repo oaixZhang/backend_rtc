@@ -1,15 +1,20 @@
 package com.rtc.bean;
 
+import java.util.List;
+
 public class ClassBean {
     private int classId;
     private int teacherId;
     private int classSize;
     private int courseHours;
-    private int courseName;
+    private String courseName;
 
-    public ClassBean(){}
+    private List<UserBean> stuList;
 
-    public ClassBean(int classSize, int courseHours, int courseName) {
+    public ClassBean() {
+    }
+
+    public ClassBean(int classSize, int courseHours, String courseName) {
         this.classSize = classSize;
         this.courseHours = courseHours;
         this.courseName = courseName;
@@ -47,11 +52,19 @@ public class ClassBean {
         this.courseHours = courseHours;
     }
 
-    public int getCourseName() {
+    public String getCourseName() {
         return courseName;
     }
 
-    public void setCourseName(int courseName) {
+    public void setCourseName(String courseName) {
         this.courseName = courseName;
+    }
+
+    public List<UserBean> getStuList() {
+        return stuList;
+    }
+
+    public void setStuList(List<UserBean> stuList) {
+        this.stuList = stuList;
     }
 }

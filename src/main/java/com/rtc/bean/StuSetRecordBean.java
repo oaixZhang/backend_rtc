@@ -1,0 +1,75 @@
+package com.rtc.bean;
+
+import java.util.Date;
+
+public class StuSetRecordBean {
+    public static final int UNCOMMITTED = 0;
+    public static final int COMMITTED = 1;
+    public static final int CHECKED = 2;
+    private int stuId;
+    private String name;
+    private int quesSetId;
+    private int flag;
+    private Date committedDate;
+    private Date checkedDate;
+    private float accuracy;
+
+    public StuSetRecordBean() {
+    }
+
+    public int getStuId() {
+        return stuId;
+    }
+
+    public void setStuId(int stuId) {
+        this.stuId = stuId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getQuesSetId() {
+        return quesSetId;
+    }
+
+    public void setQuesSetId(int quesSetId) {
+        this.quesSetId = quesSetId;
+    }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
+
+    public Date getCommittedDate() {
+        return committedDate;
+    }
+
+    public void setCommittedDate(Date committedDate) {
+        this.committedDate = committedDate;
+    }
+
+    public Date getCheckedDate() {
+        return checkedDate;
+    }
+
+    public void setCheckedDate(Date checkedDate) {
+        this.checkedDate = checkedDate;
+    }
+
+    public float getAccuracy() {
+        return accuracy;
+    }
+
+    public void setAccuracy(float accuracy) {
+        this.accuracy = accuracy;
+    }
+}

@@ -7,10 +7,22 @@
     <insert id="insertRecord">
         INSERT INTO stu_ques_record (stuId,quesId,quesType,errFlag,quesSetId,stuAnswer) VALUES (#{stuId},#{quesId},#{quesType},#{errFlag},#{quesSetId},#{stuAnswer})
     </insert>
+    <insert id="insertSetRecord">
+        INSERT INTO stu_set_record (stuId,quesSetId,committedDate) VALUES (#{stuId},#{quesSetId},#{date})
+    </insert>
 
     <select id="getRecordByStuIdQuesIdSetId" resultType="com.rtc.bean.StuQuesRecordBean">
         SELECT * FROM stu_ques_record WHERE stuId = #{stuId} and quesId = #{quesId} and quesSetId = #{quesSetId} and quesType=#{quesType}
     </select>
+
+    <select id="getStuSetRecord" resultType="com.rtc.bean.StuQuesRecordBean">
+        SELECT * FROM stu_ques_record WHERE stuId = #{stuId} and quesSetId = #{quesSetId}
+    </select>
+
+    <select id="getStuSetRecordByClassIdAndSetId" resultType="com.rtc.bean.StuSetRecordBean">
+        SELECT tb1.stuId,tb2.name,tb1.quesSetId,tb1.flag,tb1.committedDate,tb1.checkedDate,tb1.accuracy FROM stu_set_record tb1 JOIN user tb2 ON tb1.stuId = tb2.stuId WHERE quesSetId = #{quesSetId}
+    </select>
+
     <update id="updateRecord">
         UPDATE stu_ques_record SET errFlag = #{errFlag} WHERE stuId = #{stuId} and quesId = #{quesId} and quesSetId = #{quesSetId} and quesType=#{quesType}
     </update>

@@ -22,7 +22,7 @@ public class SetService {
     public QuesSetBean createQuesSet(QuesSetBean quesSetBean) {
         if (setMapper.createQuesSet(quesSetBean) == 1) {
             LogUtils.info("quesSetBean: quesSetId = " + quesSetBean.getQuesSetId());
-            Iterator iterator = quesSetBean.getQuesSet().iterator();
+            Iterator iterator = quesSetBean.getQuesList().iterator();
             while (iterator.hasNext()) {
                 if (setMapper.insertQuesIntoSet(quesSetBean.getQuesSetId(), (BaseQuestionBean) iterator.next()) == 1) {
                     LogUtils.info("insert success");
@@ -34,34 +34,40 @@ public class SetService {
         return quesSetBean;
     }
 
-    public QuesSetBean getQuesSetById(int quesSetId) {
-        QuesSetBean quesSetBean = setMapper.getQuesSetById(quesSetId);
-        Iterator iterator = quesSetBean.getQuesSet().iterator();
-        Set<BaseQuestionBean> finalSet = new HashSet<>();
+    public List<QuesSetBean> getSetListByClassId(int classId) {
+        return setMapper.getSetListByClassId(classId);
+    }
 
-        while (iterator.hasNext()) {
-            BaseQuestionBean baseQuestionBean = (BaseQuestionBean) iterator.next();
-            switch (baseQuestionBean.getQuesType()) {
-                case BaseQuestionBean.FILLBLANK:
-                    finalSet.add(questionMapper.getFillBlankQuesById(baseQuestionBean.getQuesId()));
-                    break;
-                case BaseQuestionBean.SELECT:
-                    finalSet.add(questionMapper.getSelectQuesById(baseQuestionBean.getQuesId()));
-                    break;
-                case BaseQuestionBean.MULITCHOICE:
-                    finalSet.add(questionMapper.getMulitChoiceQuesById(baseQuestionBean.getQuesId()));
-                    break;
-                case BaseQuestionBean.SIMPLEANSWER:
-                    finalSet.add(questionMapper.getSimpleAnswerQuesById(baseQuestionBean.getQuesId()));
-                    break;
-                case BaseQuestionBean.TRUEORFALSE:
-                    finalSet.add(questionMapper.getTrueOrFalseQuesById(baseQuestionBean.getQuesId()));
-                    break;
-            }
+    public QuesSetBean getSetById(int quesSetId) {
+        return setMapper.getQuesSetById(quesSetId);
+    }
+
+    public QuesSetBean getSetAndQuesById(int quesSetId) {
+        QuesSetBean quesSetBean = setMapper.getSetAndQuesById(quesSetId);
+        List<BaseQuestionBean> finalList = new ArrayList<>();
+        for (BaseQuestionBean quesBean : quesSetBean.getQuesList()) {
+            BaseQuestionBean bean = getQuesByTypeAndId(quesBean.getQuesType(), quesBean.getQuesId());
+            bean.setQuesType(quesBean.getQuesType());
+            finalList.add(bean);
         }
-
-        quesSetBean.setQuesSet(finalSet);
+        quesSetBean.setQuesList(finalList);
         return quesSetBean;
+    }
+
+    public BaseQuestionBean getQuesByTypeAndId(int quesType, int quesId) {
+        switch (quesType) {
+            case BaseQuestionBean.FILLBLANK:
+                return questionMapper.getFillBlankQuesById(quesId);
+            case BaseQuestionBean.SELECT:
+                return questionMapper.getSelectQuesById(quesId);
+            case BaseQuestionBean.MULITCHOICE:
+                return questionMapper.getMulitChoiceQuesById(quesId);
+            case BaseQuestionBean.SIMPLEANSWER:
+                return questionMapper.getSimpleAnswerQuesById(quesId);
+            case BaseQuestionBean.TRUEORFALSE:
+                return questionMapper.getTrueOrFalseQuesById(quesId);
+        }
+        return null;
     }
 
     public int assignSetToClasses(int[] classIds, int quesSetId) {
@@ -75,11 +81,11 @@ public class SetService {
         return 1;
     }
 
-    public List<QuesSetBean> getSetByClassId(int classId) {
+    public List<QuesSetBean> getSetIdsByClassId(int classId) {
         List<QuesSetBean> list = new ArrayList<>();
         int[] setIds = setMapper.getSetIdsByClassId(classId);
         for (int setId : setIds) {
-            list.add(getQuesSetById(setId));
+            list.add(getSetById(setId));
         }
         return list;
     }

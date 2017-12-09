@@ -15,21 +15,22 @@
     <select id="getQuesByQuesSetId" resultType="com.rtc.bean.BaseQuestionBean">
         SELECT * FROM set_ques WHERE quesSetId = #{quesSetId}
     </select>
+
+    <select id="getQuesSetById" resultType="com.rtc.bean.QuesSetBean">
+        SELECT * FROM ques_set WHERE quesSetId = #{quesSetId}
+    </select>
+
     <resultMap id="SetAndQues" type="com.rtc.bean.QuesSetBean">
         <id column="quesSetId" property="quesSetId"/>
         <result column="quesNum" property="quesNum"/>
         <result column="teacherId" property="teacherId"/>
         <result column="flag" property="flag"/>
         <result column="mark" property="mark"/>
-        <collection property="quesSet" ofType="com.rtc.bean.BaseQuestionBean"
+        <collection property="quesList" ofType="com.rtc.bean.BaseQuestionBean"
                     select="com.rtc.dao.SetMapper.getQuesByQuesSetId" column="quesSetId">
         </collection>
     </resultMap>
-    <!--<select id="getQuesSetById" resultMap="SetAndQues">-->
-    <!--SELECT a.quesSetId,a.quesNum,a.teacherId,a.flag,a.mark,b.quesId,b.quesSetId -->
-    <!--FROM ques_set a JOIN set_ques b ON a.quesSetId = b.quesSetId -->
-    <!--WHERE a.quesSetId = #{quesSetId}-->
-    <select id="getQuesSetById" resultMap="SetAndQues">
+    <select id="getSetAndQuesById" resultMap="SetAndQues">
         SELECT * FROM ques_set WHERE quesSetId = #{quesSetId}
     </select>
 
@@ -41,6 +42,19 @@
     </resultMap>
     <select id="getSetIdsByClassId" resultMap="SetIds">
         SELECT * FROM set_class WHERE classId = #{classId}
+    </select>
+
+    <resultMap id="setList" type="com.rtc.bean.QuesSetBean">
+        <result column="quesSetId" property="quesSetId"/>
+        <result column="date" property="date"/>
+        <result column="quesNum" property="quesNum"/>
+        <result column="teacherId" property="teacherId"/>
+        <result column="flag" property="flag"/>
+        <result column="mark" property="mark"/>
+    </resultMap>
+    <select id="getSetListByClassId" resultMap="setList">
+        SELECT tb1.classId,tb1.quesSetId,tb1.date,tb2.quesNum,tb2.teacherId,tb2.flag,tb2.mark
+         FROM set_class tb1 JOIN ques_set tb2 ON tb1.quesSetId = tb2.quesSetId WHERE tb1.classId = #{classId}
     </select>
 
 </mapper>

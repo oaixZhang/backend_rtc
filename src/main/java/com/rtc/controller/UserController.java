@@ -19,12 +19,24 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 查询所有用户
+     * @return
+     */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> getAllUsers() {
         return MyResponse.sResponse(userService.getAllUsers());
     }
 
+    /**
+     * 学生注册
+     * @param userNmae 用户名
+     * @param password 密码
+     * @param name 姓名
+     * @param grade 年龄
+     * @param gender 性别
+     */
     @RequestMapping(value = "/stu/register", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> stuRegister(@RequestParam("userName") String userNmae,
@@ -40,6 +52,14 @@ public class UserController {
         }
     }
 
+    /**
+     * 老师注册
+     * @param phoneNum 手机号即用户账号
+     * @param password 密码
+     * @param name 姓名
+     * @param school 学校
+     * @param gender 性别
+     */
     @RequestMapping(value = "/teacher/register", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> teacherRegister(@RequestParam("phoneNum") String phoneNum,
@@ -55,13 +75,36 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    /**
+     *学生登陆
+     */
+    @RequestMapping(value = "/stu/login", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> login(@RequestParam("userName") String userName,
+    public Map<String, Object> stuLogin(@RequestParam("userName") String userName,
                                      @RequestParam("password") String password) {
         return userService.login(userName, password);
     }
 
+    /**
+     * 教师登陆
+     */
+    @RequestMapping(value = "/teacher/login", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> teacherLogin(@RequestParam("phoneNum") String phoneNum,
+                                     @RequestParam("password") String password) {
+        return userService.login(phoneNum, password);
+    }
+
+    /**
+     * 修改用户个人信息
+     * @param stuId 学生Id
+     * @param email
+     * @param gender
+     * @param school
+     * @param grade
+     * @param phoneNum
+     * @param qqNum
+     */
     @RequestMapping(value = "/stu/info", method = RequestMethod.PUT)
     @ResponseBody
     public Map<String, Object> updateStuInfo(@RequestParam("stuId") int stuId,

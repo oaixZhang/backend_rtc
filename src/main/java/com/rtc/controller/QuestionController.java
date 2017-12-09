@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
+/**
+ * 题目相关
+ */
 @Controller
 @RequestMapping("/question")
 public class QuestionController {
@@ -21,12 +24,19 @@ public class QuestionController {
     @Autowired
     private QuestionService questionService;
 
+    /**
+     * 获取所有填空题
+     * @return HashMap，键值对形式的json
+     */
     @RequestMapping(value = "/fillBlank/all", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> getAllFillBlankQuestions() {
         return MyResponse.sResponse(questionService.getAllFillBlankQuestions());
     }
 
+    /**
+     * 获取所有选择题
+     */
     @RequestMapping(value = "/select/all", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> getAllSelectQuestions() {
@@ -34,24 +44,37 @@ public class QuestionController {
         return MyResponse.sResponse(questionService.getAllSelectQuestions());
     }
 
+    /**
+     * 多选题
+     */
     @RequestMapping(value = "/mulitChoice/all", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> getAllMulitChoiceQues() {
         return MyResponse.sResponse(questionService.getAllMulitChoiceQues());
     }
 
+    /**
+     * 判断题
+     */
     @RequestMapping(value = "/trueOrFalse/all", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> getAllTrueOrFalseQues() {
         return MyResponse.sResponse(questionService.getAllTrueOrFalseQues());
     }
 
+    /**
+     * 简答题
+     */
     @RequestMapping(value = "/simpleAnswer/all", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> getAllSimpleAnswerQues() {
         return MyResponse.sResponse(questionService.getAllSimpleAnswerQues());
     }
 
+    /**
+     * 根据题目Id获取指定的题目（填空题）
+     * @param quesId 题目的Id
+     */
     @RequestMapping(value = "/fillBlank/{quesId}", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> getFillBlankQuesById(@PathVariable("quesId") int quesId) {

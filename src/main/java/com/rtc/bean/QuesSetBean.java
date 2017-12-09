@@ -1,5 +1,7 @@
 package com.rtc.bean;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 public class QuesSetBean {
@@ -9,7 +11,9 @@ public class QuesSetBean {
     private int flag;
     private int mark;
 
-    private Set<BaseQuestionBean> quesSet;
+    private Date date;
+
+    private List<BaseQuestionBean> quesList;
 
     public QuesSetBean() {
     }
@@ -54,12 +58,20 @@ public class QuesSetBean {
         this.mark = mark;
     }
 
-    public Set<BaseQuestionBean> getQuesSet() {
-        return quesSet;
+    public List<BaseQuestionBean> getQuesList() {
+        return quesList;
     }
 
-    public void setQuesSet(Set<BaseQuestionBean> quesSet) {
-        this.quesSet = quesSet;
+    public void setQuesList(List<BaseQuestionBean> quesSet) {
+        this.quesList = quesSet;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @Override
@@ -70,7 +82,8 @@ public class QuesSetBean {
                 ", teacherId=" + teacherId +
                 ", flag=" + flag +
                 ", mark=" + mark +
-                ", quesSet=" + quesSet +
+                ", date=" + date +
+                ", quesSet=" + quesList +
                 '}';
     }
 }

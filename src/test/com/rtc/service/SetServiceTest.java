@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
@@ -28,31 +30,31 @@ public class SetServiceTest {
 
     @Test
     public void getSetByClassId() throws Exception {
-        System.out.println("list: " + setService.getSetByClassId(1));
+        System.out.println("list: " + setService.getSetById(1));
     }
 
     @Test
     public void createQuesSet() throws Exception {
         QuesSetBean quesSetBean = new QuesSetBean();
 
-        HashSet<BaseQuestionBean> set = new HashSet<>();
+        List<BaseQuestionBean> list = new ArrayList<>();
         for (int i = 1; i < 4; i++) {
             BaseQuestionBean baseQuestionBean = new BaseQuestionBean();
             baseQuestionBean.setQuesId(1);
             baseQuestionBean.setQuesType(i);
-            set.add(baseQuestionBean);
+            list.add(baseQuestionBean);
         }
 
 
-        quesSetBean.setQuesNum(set.size());
+        quesSetBean.setQuesNum(list.size());
         quesSetBean.setFlag(0);
         quesSetBean.setMark(100);
         quesSetBean.setTeacherId(1);
-        quesSetBean.setQuesSet(set);
+        quesSetBean.setQuesList(list);
 
         if (setMapper.createQuesSet(quesSetBean) == 1) {
             LogUtils.info("quesSetBean: quesSetId = " + quesSetBean.getQuesSetId());
-            Iterator iterator = quesSetBean.getQuesSet().iterator();
+            Iterator iterator = quesSetBean.getQuesList().iterator();
             while (iterator.hasNext()) {
                 if (setMapper.insertQuesIntoSet(quesSetBean.getQuesSetId(),
                         (BaseQuestionBean) iterator.next()) == 1) {

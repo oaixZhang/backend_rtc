@@ -2,6 +2,7 @@ package com.rtc.dao;
 
 import com.rtc.bean.BaseQuestionBean;
 import com.rtc.bean.QuesSetBean;
+import com.rtc.bean.StuSetRecordBean;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
@@ -14,7 +15,12 @@ public interface SetMapper {
 
     public QuesSetBean getQuesSetById(int quesSetId);
 
+    public List<QuesSetBean> getSetListByClassId(int classId);
+
+    public QuesSetBean getSetAndQuesById(int quesSetId);
+
     public int assignSetToClass(@Param("quesSetId") int quesSetId, @Param("classId") int classId, @Param("date") Date time);
 
     public int[] getSetIdsByClassId(int classId);
+
 }
