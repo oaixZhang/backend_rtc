@@ -2,10 +2,14 @@ package com.rtc.controller;
 
 
 
+import com.rtc.bean.MyResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Map;
 
 /**
  * 测试类
@@ -14,8 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HelloController {
     final Logger logger = LoggerFactory.getLogger(HelloController.class);
     @RequestMapping("/hello")
-    public String helloWorld(){
+    @ResponseBody
+    public Map<String, Object> helloWorld(){
         logger.info("***** from log4j logger");
-        return "hello";
+        return MyResponse.sResponse("hello spring");
     }
 }

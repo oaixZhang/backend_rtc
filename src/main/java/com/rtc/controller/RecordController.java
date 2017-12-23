@@ -63,6 +63,17 @@ public class RecordController {
     public Map<String, Object> getStuSetRecord(@PathVariable int stuId, @PathVariable int quesSetId) {
         return MyResponse.sResponse(recordService.getStuSetRecord(stuId, quesSetId));
     }
+    /**
+     * 查询学生的全部作业记录
+     *
+     * @param stuId     学生Id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/record/stuSetAnswer/stuId={stuId}", method = RequestMethod.GET)
+    public Map<String, Object> getStuSetRecord(@PathVariable int stuId) {
+        return MyResponse.sResponse(recordService.getStuSetRecordByStuId(stuId));
+    }
 
     /**
      * 老师使用

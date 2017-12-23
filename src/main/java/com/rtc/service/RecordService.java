@@ -49,6 +49,11 @@ public class RecordService {
         return quesSetBean;
     }
 
+    public List<StuSetRecordBean> getStuSetRecordByStuId(int stuId) {
+        List<StuSetRecordBean> list = recordMapper.getStuSetRecordByStuId(stuId);
+        return list;
+    }
+
     public List<StuSetRecordBean> getStuSetRecordByClassIdAndSetId(int classId, int quesSetId) {
         return recordMapper.getStuSetRecordByClassIdAndSetId(classId, quesSetId);
     }

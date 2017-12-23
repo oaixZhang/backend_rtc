@@ -4,6 +4,7 @@ import com.rtc.bean.BaseQuestionBean;
 import com.rtc.bean.MyResponse;
 import com.rtc.bean.QuesSetBean;
 import com.rtc.service.SetService;
+import com.rtc.utils.LogUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,12 @@ public class SetController {
     public Map<String, Object> createQuestionSet(List<BaseQuestionBean> list) {
         QuesSetBean quesSetBean = new QuesSetBean();
         quesSetBean.setQuesList(list);
-        return MyResponse.sResponse(setService.createQuesSet(quesSetBean));
+        try {
+            return  MyResponse.sResponse(setService.createQuesSet(quesSetBean));
+        }catch(Exception e) {
+            LogUtils.info("log");
+        }
+        return null;
     }
 
     /**

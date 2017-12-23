@@ -3,6 +3,7 @@ package com.rtc.controller;
 import com.rtc.bean.ClassBean;
 import com.rtc.bean.MyResponse;
 import com.rtc.service.ClassService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/class")
 public class ClassController {
+    private Logger logger= Logger.getLogger(ClassController.class);
     @Autowired
     private ClassService classService;
 
@@ -31,6 +33,7 @@ public class ClassController {
                                            @RequestParam("courseName") String courseName,
                                            @RequestParam("courseHours") int courseHours) {
         ClassBean classBean = new ClassBean(classSize, courseHours, courseName);
+        logger.info("");
         classBean.setTeacherId(teacherId);
         if (classService.createClass(classBean) == 1) {
             return MyResponse.sResponse(classBean);

@@ -9,6 +9,7 @@ public class StuSetRecordBean {
     private int stuId;
     private String name;
     private int quesSetId;
+    private int classId;
     private int flag;
     private Date committedDate;
     private Date checkedDate;
@@ -31,6 +32,14 @@ public class StuSetRecordBean {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getClassId() {
+        return classId;
+    }
+
+    public void setClassId(int classId) {
+        this.classId = classId;
     }
 
     public int getQuesSetId() {

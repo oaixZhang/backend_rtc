@@ -34,7 +34,8 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 <!--enable annotation-->
-    <tx:annotation-driven/>
+    <!--<tx:annotation-driven/>-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 <!--mybatis mapper scan-->
     <mybatis-spring:scan base-package="com.rtc.dao"/>
 
