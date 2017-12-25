@@ -1,18 +1,16 @@
 package com.rtc.bean;
 
 public class TrueOrFalseQuesBean extends BaseQuestionBean{
-    public static int quesType = 5;
+    public static String type = "true or false";
 
     @Override
     public String toString() {
         return "TrueOrFalseQuesBean{" +
-                "quesId=" + quesId +
-                ", content='" + content + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
                 ", answer=" + answer +
-                ", flag=" + flag +
-                ", imagePath='" + imagePath + '\'' +
-                ", accuracy=" + accuracy +
-                ", sovleNum=" + sovleNum +
+                ", point=" + point +
                 ", symbols=" + symbols +
                 '}';
     }

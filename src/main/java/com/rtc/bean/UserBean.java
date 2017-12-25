@@ -1,34 +1,36 @@
 package com.rtc.bean;
 
 public class UserBean {
-    private int stuId;
+    private int id;
     private String email;
     private String password;
     private String userName;
     private String name;
     private String school;
     private String grade;
-    private String qqNum;
-    private String phoneNum;
+    private String qq;
+    private String phone;
     private int gender;
+    private boolean isTeacher;
 
     public UserBean() {
     }
 
-    public UserBean(String userName,String password,  String name, String grade, int gender) {
+    public UserBean(String phone, String password, String name, String grade, int gender, boolean isTeacher) {
         this.password = password;
-        this.userName = userName;
+        this.phone = phone;
         this.name = name;
         this.grade = grade;
         this.gender = gender;
+        this.isTeacher = isTeacher;
     }
 
-    public int getStuId() {
-        return stuId;
+    public int getId() {
+        return id;
     }
 
-    public void setStuId(int stuId) {
-        this.stuId = stuId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -79,20 +81,20 @@ public class UserBean {
         this.grade = grade;
     }
 
-    public String getQqNum() {
-        return qqNum;
+    public String getQq() {
+        return qq;
     }
 
-    public void setQqNum(String qqNum) {
-        this.qqNum = qqNum;
+    public void setQq(String qq) {
+        this.qq = qq;
     }
 
-    public String getPhoneNum() {
-        return phoneNum;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public int getGender() {
@@ -103,19 +105,28 @@ public class UserBean {
         this.gender = gender;
     }
 
+    public boolean isTeacher() {
+        return isTeacher;
+    }
+
+    public void setTeacher(boolean teacher) {
+        isTeacher = teacher;
+    }
+
     @Override
     public String toString() {
         return "UserBean{" +
-                "stuID='" + stuId + '\'' +
+                "userId=" + id +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", userName='" + userName + '\'' +
                 ", name='" + name + '\'' +
                 ", school='" + school + '\'' +
                 ", grade='" + grade + '\'' +
-                ", qqNum='" + qqNum + '\'' +
-                ", phoneNum='" + phoneNum + '\'' +
+                ", qqNum='" + qq + '\'' +
+                ", phone='" + phone + '\'' +
                 ", gender=" + gender +
+                ", isTeacher=" + isTeacher +
                 '}';
     }
 }

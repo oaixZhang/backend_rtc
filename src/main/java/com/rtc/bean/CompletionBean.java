@@ -1,11 +1,11 @@
 package com.rtc.bean;
 
-public class MulitChoiceQuesBean extends BaseQuestionBean {
-    public static String type = "multiple";
+public class CompletionBean extends BaseQuestionBean{
+    public static String type = "completion";
 
     @Override
     public String toString() {
-        return "MulitChoiceQuesBean{" +
+        return "CompletionBean{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", imgUrl='" + imgUrl + '\'' +

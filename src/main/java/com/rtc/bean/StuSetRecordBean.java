@@ -3,9 +3,6 @@ package com.rtc.bean;
 import java.util.Date;
 
 public class StuSetRecordBean {
-    public static final int UNCOMMITTED = 0;
-    public static final int COMMITTED = 1;
-    public static final int CHECKED = 2;
     private int stuId;
     private String name;
     private int quesSetId;

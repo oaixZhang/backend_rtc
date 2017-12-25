@@ -8,11 +8,9 @@ import java.util.List;
 public interface UserMapper {
     public List<UserBean> getAllUsers();
 
-    public int stuRegister(UserBean userBean);
+    public int register(UserBean userBean);
 
-    public int teacherRegister(TeacherBean teacherBean);
-
-    public UserBean login(String userName,String password);
+    public UserBean login(String phone,String password);
 
     public UserBean updateStuInfo(UserBean userBean);
 

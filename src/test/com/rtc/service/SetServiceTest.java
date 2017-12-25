@@ -33,38 +33,38 @@ public class SetServiceTest {
         System.out.println("list: " + setService.getSetById(1));
     }
 
-    @Test
-    public void createQuesSet() throws Exception {
-        QuesSetBean quesSetBean = new QuesSetBean();
-
-        List<BaseQuestionBean> list = new ArrayList<>();
-        for (int i = 1; i < 4; i++) {
-            BaseQuestionBean baseQuestionBean = new BaseQuestionBean();
-            baseQuestionBean.setQuesId(1);
-            baseQuestionBean.setQuesType(i);
-            list.add(baseQuestionBean);
-        }
-
-
-        quesSetBean.setQuesNum(list.size());
-        quesSetBean.setFlag(0);
-        quesSetBean.setMark(100);
-        quesSetBean.setTeacherId(1);
-        quesSetBean.setQuesList(list);
-
-        if (setMapper.createQuesSet(quesSetBean) == 1) {
-            LogUtils.info("quesSetBean: quesSetId = " + quesSetBean.getQuesSetId());
-            Iterator iterator = quesSetBean.getQuesList().iterator();
-            while (iterator.hasNext()) {
-                if (setMapper.insertQuesIntoSet(quesSetBean.getQuesSetId(),
-                        (BaseQuestionBean) iterator.next()) == 1) {
-                    LogUtils.info("insert success");
-                } else {
-                    LogUtils.info("error");
-                }
-            }
-        }
-    }
+//    @Test
+//    public void createQuesSet() throws Exception {
+//        QuesSetBean quesSetBean = new QuesSetBean();
+//
+//        List<BaseQuestionBean> list = new ArrayList<>();
+//        for (int i = 1; i < 4; i++) {
+//            BaseQuestionBean baseQuestionBean = new BaseQuestionBean();
+//            baseQuestionBean.setId(1);
+//            baseQuestionBean.(i);
+//            list.add(baseQuestionBean);
+//        }
+//
+//
+//        quesSetBean.setQuesNum(list.size());
+//        quesSetBean.setFlag(0);
+//        quesSetBean.setMark(100);
+//        quesSetBean.setTeacherId(1);
+//        quesSetBean.setQuesList(list);
+//
+//        if (setMapper.createQuesSet(quesSetBean) == 1) {
+//            LogUtils.info("quesSetBean: quesSetId = " + quesSetBean.getQuesSetId());
+//            Iterator iterator = quesSetBean.getQuesList().iterator();
+//            while (iterator.hasNext()) {
+//                if (setMapper.insertQuesIntoSet(quesSetBean.getQuesSetId(),
+//                        (BaseQuestionBean) iterator.next()) == 1) {
+//                    LogUtils.info("insert success");
+//                } else {
+//                    LogUtils.info("error");
+//                }
+//            }
+//        }
+//    }
 
     @Test
     public void getQuesSetById() throws Exception {

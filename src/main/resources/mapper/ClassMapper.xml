@@ -9,23 +9,23 @@
     </select>
 
     <select id="getClassesByTeacherId" resultType="com.rtc.bean.ClassBean">
-        SELECT * FROM class WHERE teacherId = #{teacherId}
+        SELECT * FROM class WHERE teacher_id = #{teacherId}
     </select>
 
     <select id="getClassByClassId" resultType="com.rtc.bean.ClassBean">
-        SELECT * FROM class WHERE classId = #{classId}
+        SELECT * FROM class WHERE id = #{classId}
     </select>
 
     <select id="getStuListByClassId" resultType="com.rtc.bean.UserBean">
-        SELECT tb1.stuId,tb2.name,tb2.grade FROM class_stu tb1 JOIN user tb2 ON tb1.stuId = tb2.stuId WHERE classId = #{classId}
+        SELECT tb2.id,tb2.name,tb2.grade FROM class_student tb1 JOIN user tb2 ON tb1.user_id = tb2.id WHERE class_id = #{classId}
     </select>
 
     <insert id="createClass" useGeneratedKeys="true" keyProperty="classId">
-        INSERT INTO class (teacherId,courseName,courseHours,classSize) VALUES (#{teacherId},#{courseName},#{courseHours},#{classSize})
+        INSERT INTO class (teacher_id,course_name,course_hours,class_size) VALUES (#{teacherId},#{courseName},#{courseHours},#{classSize})
     </insert>
 
     <insert id="stuJoinClass">
-        INSERT INTO class_stu (classId,stuId) VALUES (#{param1},#{param2})
+        INSERT INTO class_student (class_id,user_id) VALUES (#{param1},#{param2})
     </insert>
 
 

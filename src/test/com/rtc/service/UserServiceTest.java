@@ -25,13 +25,13 @@ public class UserServiceTest {
      List<UserBean> list=userMapper.getAllUsers();
         System.out.println("accountList=" + list.toString());
     }
-    @Test
-    public void testStuRegister() throws Exception {
-        UserBean userBean = new UserBean("Toom123", "123123"
-                , "toom", "g-1", 1);
-
-        userService.stuRegister(userBean);
-        LogUtils.info("UseriD: "+userBean.getStuId());
-    }
+//    @Test
+//    public void testStuRegister() throws Exception {
+//        UserBean userBean = new UserBean("Toom123", "123123"
+//                , "toom", "g-1", 1);
+//
+//        userService.register(userBean);
+//        LogUtils.info("UseriD: "+userBean.getId());
+//    }
 
 }

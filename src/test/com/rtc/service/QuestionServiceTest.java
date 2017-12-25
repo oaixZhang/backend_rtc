@@ -2,15 +2,12 @@ package com.rtc.service;
 
 import com.rtc.bean.*;
 import com.rtc.dao.QuestionMapper;
-import com.rtc.utils.LogUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -24,12 +21,12 @@ public class QuestionServiceTest {
 
     @Test
     public void getAllFillBlank() throws Exception {
-        List<FillBlankBean> list = questionMapper.getAllFillBlankQuestions();
+        List<CompletionBean> list = questionMapper.getAllCompletionQuestions();
         System.out.println("fillBlankList=" + list.toString());
     }
     @Test
     public void getFillBlankById() throws Exception {
-        FillBlankBean list = questionService.getFillBlankQuesById(1);
+        CompletionBean list = questionService.getCompletionById(1);
         System.out.println("fillBlank=" + list);
     }
 

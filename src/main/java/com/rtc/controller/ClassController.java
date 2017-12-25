@@ -3,7 +3,6 @@ package com.rtc.controller;
 import com.rtc.bean.ClassBean;
 import com.rtc.bean.MyResponse;
 import com.rtc.service.ClassService;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +12,6 @@ import java.util.Map;
 @Controller
 @RequestMapping("/class")
 public class ClassController {
-    private Logger logger= Logger.getLogger(ClassController.class);
     @Autowired
     private ClassService classService;
 
@@ -33,12 +31,11 @@ public class ClassController {
                                            @RequestParam("courseName") String courseName,
                                            @RequestParam("courseHours") int courseHours) {
         ClassBean classBean = new ClassBean(classSize, courseHours, courseName);
-        logger.info("");
         classBean.setTeacherId(teacherId);
         if (classService.createClass(classBean) == 1) {
             return MyResponse.sResponse(classBean);
         } else {
-            return MyResponse.fResponse(400, "register failed", "");
+            return MyResponse.fResponse(400, "create class failed", "");
         }
     }
 
@@ -59,7 +56,7 @@ public class ClassController {
      * @param teacherId 教师Id
      * @return
      */
-    @RequestMapping(value = "/teacherId/{teacherId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/list/teacherId={teacherId}", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> getClassesByTeacherId(@PathVariable int teacherId) {
         return MyResponse.sResponse(classService.getClassesByTeacherId(teacherId));
@@ -95,7 +92,7 @@ public class ClassController {
         }
     }
 
-    @RequestMapping(value = "/stuList/{classId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/stuList/classId={classId}", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> getStuListByClassId(@PathVariable int classId) {
         return MyResponse.sResponse(classService.getStuListByClassId(classId));

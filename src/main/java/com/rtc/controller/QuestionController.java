@@ -28,16 +28,16 @@ public class QuestionController {
      * 获取所有填空题
      * @return HashMap，键值对形式的json
      */
-    @RequestMapping(value = "/fillBlank/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/completion/all", method = RequestMethod.GET)
     @ResponseBody
-    public Map<String, Object> getAllFillBlankQuestions() {
-        return MyResponse.sResponse(questionService.getAllFillBlankQuestions());
+    public Map<String, Object> getAllCompletions() {
+        return MyResponse.sResponse(questionService.getAllCompletions());
     }
 
     /**
      * 获取所有选择题
      */
-    @RequestMapping(value = "/select/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/single/all", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> getAllSelectQuestions() {
         LogUtils.info("********** request select questions .\n" + "user-agent:" + request.getHeader("user-agent"));
@@ -75,10 +75,10 @@ public class QuestionController {
      * 根据题目Id获取指定的题目（填空题）
      * @param quesId 题目的Id
      */
-    @RequestMapping(value = "/fillBlank/{quesId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/completion/{quesId}", method = RequestMethod.GET)
     @ResponseBody
-    public Map<String, Object> getFillBlankQuesById(@PathVariable("quesId") int quesId) {
-        return MyResponse.sResponse(questionService.getFillBlankQuesById(quesId));
+    public Map<String, Object> getCompletionById(@PathVariable("quesId") int quesId) {
+        return MyResponse.sResponse(questionService.getCompletionById(quesId));
     }
 
     @RequestMapping(value = "/select/{quesId}", method = RequestMethod.GET)

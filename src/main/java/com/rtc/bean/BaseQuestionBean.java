@@ -4,45 +4,45 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class BaseQuestionBean {
-    protected int quesId;
-    protected String content;
+    protected int id;
+    protected String title;
+    protected String imgUrl;
     protected Object answer;
-    protected int flag;
-    protected String imagePath;
-    protected double accuracy;
-    protected int sovleNum;
-    private int quesType;
+    protected int point;
+    private String type = "base";
 
     public static final String[] SYMBOLS = {"^", "_", "\\sin", "\\cos", "\\frac", "\\sqrt", "_"};
 
-    public static final int FILLBLANK = 1;
-    public static final int SELECT = 2;
-    public static final int MULITCHOICE = 3;
-    public static final int SIMPLEANSWER = 4;
-    public static final int TRUEORFALSE = 5;
-
-
     protected Set<String> symbols;
 
-    public int getQuesId() {
-        return quesId;
+
+    public int getId() {
+        return id;
     }
 
-    public void setQuesId(int quesId) {
-        this.quesId = quesId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getContent() {
-        return content;
+    public String getTitle() {
+        return title;
     }
 
-    public void setContent(String content) {
+    public void setTitle(String title) {
         symbols = new HashSet<>();
         for (String str : SYMBOLS) {
-            if (content.indexOf(str) != -1)
+            if (title.indexOf(str) != -1)
                 symbols.add(str);
         }
-        this.content = content;
+        this.title = title;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public Object getAnswer() {
@@ -53,36 +53,24 @@ public class BaseQuestionBean {
         this.answer = answer;
     }
 
-    public int getFlag() {
-        return flag;
+    public int getPoint() {
+        return point;
     }
 
-    public void setFlag(int flag) {
-        this.flag = flag;
+    public void setPoint(int point) {
+        this.point = point;
     }
 
-    public String getImagePath() {
-        return imagePath;
+    public String getType() {
+        return type;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public double getAccuracy() {
-        return accuracy;
-    }
-
-    public void setAccuracy(double accuracy) {
-        this.accuracy = accuracy;
-    }
-
-    public int getSovleNum() {
-        return sovleNum;
-    }
-
-    public void setSovleNum(int sovleNum) {
-        this.sovleNum = sovleNum;
+    public static String[] getSYMBOLS() {
+        return SYMBOLS;
     }
 
     public Set<String> getSymbols() {
@@ -93,26 +81,7 @@ public class BaseQuestionBean {
         this.symbols = symbols;
     }
 
-    public int getQuesType() {
-        return quesType;
-    }
 
-    public void setQuesType(int quesType) {
-        this.quesType = quesType;
-    }
 
-    @Override
-    public String toString() {
-        return "BaseQuestionBean{" +
-                "quesId=" + quesId +
-                ", content='" + content + '\'' +
-                ", answer=" + answer +
-                ", flag=" + flag +
-                ", imagePath='" + imagePath + '\'' +
-                ", accuracy=" + accuracy +
-                ", sovleNum=" + sovleNum +
-                ", quesType=" + quesType +
-                ", symbols=" + symbols +
-                '}';
-    }
+
 }

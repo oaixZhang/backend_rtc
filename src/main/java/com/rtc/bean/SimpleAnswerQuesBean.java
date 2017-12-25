@@ -1,19 +1,16 @@
 package com.rtc.bean;
 
 public class SimpleAnswerQuesBean extends BaseQuestionBean {
-    public static int quesType = 4;
+    public static String type = "simple answer";
 
     @Override
     public String toString() {
         return "SimpleAnswerQuesBean{" +
-                "quesId=" + quesId +
-                "quesType=" + quesType +
-                ", content='" + content + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
                 ", answer=" + answer +
-                ", flag=" + flag +
-                ", imagePath='" + imagePath + '\'' +
-                ", accuracy=" + accuracy +
-                ", sovleNum=" + sovleNum +
+                ", point=" + point +
                 ", symbols=" + symbols +
                 '}';
     }

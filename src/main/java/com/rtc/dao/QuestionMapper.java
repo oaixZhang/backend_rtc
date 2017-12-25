@@ -5,7 +5,7 @@ import com.rtc.bean.*;
 import java.util.List;
 
 public interface QuestionMapper {
-    public List<FillBlankBean> getAllFillBlankQuestions();
+    public List<CompletionBean> getAllCompletionQuestions();
 
     public List<SelectQuesBean> getAllSelectQuestions();
 
@@ -15,7 +15,7 @@ public interface QuestionMapper {
 
     public List<TrueOrFalseQuesBean> getAllTrueOrFalseQues();
 
-    public FillBlankBean getFillBlankQuesById(int quesId);
+    public CompletionBean getCompletionById(int quesId);
 
     public SelectQuesBean getSelectQuesById(int quesId);
 

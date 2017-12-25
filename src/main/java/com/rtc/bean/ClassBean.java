@@ -3,7 +3,7 @@ package com.rtc.bean;
 import java.util.List;
 
 public class ClassBean {
-    private int classId;
+    private int id;
     private int teacherId;
     private int classSize;
     private int courseHours;
@@ -28,12 +28,12 @@ public class ClassBean {
         this.teacherId = teacherId;
     }
 
-    public int getClassId() {
-        return classId;
+    public int getId() {
+        return id;
     }
 
-    public void setClassId(int classId) {
-        this.classId = classId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getClassSize() {

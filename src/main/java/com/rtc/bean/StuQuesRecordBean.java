@@ -1,16 +1,12 @@
 package com.rtc.bean;
 
 public class StuQuesRecordBean {
-    public static final int NOTPROCESSED = 0;
-    public static final int CORRECT = 1;
-    public static final int WRONG = 2;
     private int id;
     private int stuId;
     private int quesId;
-    private int quesSetId;
-    private int quesType;
-    private int flag;
-    private String stuAnswer;
+    private int setId;
+    private String type;
+    private String content;
 
     public StuQuesRecordBean() {
     }
@@ -39,48 +35,27 @@ public class StuQuesRecordBean {
         this.quesId = quesId;
     }
 
-    public int getQuesSetId() {
-        return quesSetId;
+    public int getSetId() {
+        return setId;
     }
 
-    public void setQuesSetId(int quesSetId) {
-        this.quesSetId = quesSetId;
+    public void setSetId(int setId) {
+        this.setId = setId;
     }
 
-    public int getQuesType() {
-        return quesType;
+    public String getType() {
+        return type;
     }
 
-    public void setQuesType(int quesType) {
-        this.quesType = quesType;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public int getFlag() {
-        return flag;
+    public String getContent() {
+        return content;
     }
 
-    public void setFlag(int flag) {
-        this.flag = flag;
-    }
-
-    public String getStuAnswer() {
-        return stuAnswer;
-    }
-
-    public void setStuAnswer(String stuAnswer) {
-        this.stuAnswer = stuAnswer;
-    }
-
-    @Override
-    public String toString() {
-        return "StuQuesRecordBean{" +
-                "id=" + id +
-                ", stuId=" + stuId +
-                ", quesId=" + quesId +
-                ", quesSetId=" + quesSetId +
-                ", quesType=" + quesType +
-                ", flag=" + flag +
-                ", stuAnswer='" + stuAnswer + '\'' +
-                '}';
+    public void setContent(String content) {
+        this.content = content;
     }
 }

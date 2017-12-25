@@ -47,7 +47,7 @@ public class RecordController {
         StuQuesRecordBean recordBean = new StuQuesRecordBean();
         recordBean.setQuesId(quesId);
         recordBean.setStuId(stuId);
-        recordBean.setQuesSetId(quesSetId);
+        recordBean.setSetId(quesSetId);
         return MyResponse.sResponse(recordService.getRecordByStuIdQuesIdSetId(recordBean));
     }
 
